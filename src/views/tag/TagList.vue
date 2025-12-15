@@ -80,7 +80,7 @@ const handlePageChange = (page) => {
 }
 
 const handleAdd = () => {
-  form.value = { id: '', name: '', slug: '' }
+  form.value = { name: '', slug: '' }
   dialogVisible.value = true
 }
 

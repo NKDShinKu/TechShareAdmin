@@ -57,7 +57,7 @@ const fetchData = async () => {
 }
 
 const handleAdd = () => {
-  form.value = { id: '', name: '', slug: '' }
+  form.value = { name: '', slug: '' }
   dialogVisible.value = true
 }
 
