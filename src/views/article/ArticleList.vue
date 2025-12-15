@@ -41,7 +41,7 @@
           </template>
           <!-- 未通过：通过、打回 -->
           <template v-else-if="activeTab === 'rejected'">
-            <el-button size="small" type="success" @click="handleAudit(scope.row, 'pass')">通过</el-button>
+            <!-- <el-button size="small" type="success" @click="handleAudit(scope.row, 'pass')">通过</el-button> -->
             <el-button size="small" type="warning" @click="handCancelPending(scope.row)">删除提交</el-button>
           </template>
         </template>
