@@ -167,38 +167,27 @@ const handlePageChange = (page) => {
   fetchData()
 }
 
-const handleView = async (row) => {
-  try {
-    loading.value = true
-    const res = await request.get(`/notes/${row.id}`)
-    const noteData = res.data
-    
-    // 根据状态选择显示的版本
-    const version = noteData.publishedVersion || noteData.pendingVersion || noteData.draftVersion
-    
-    if (!version) {
-      ElMessage.warning('无内容')
-      return
-    }
-    
-    currentDetailNote.value = {
-      title: version.title,
-      content: version.content_md,
-      cover: getImageUrl(version.cover_url),
-      author: noteData.author?.nickname,
-      category: version.category?.name || '未分类',
-      status: noteData.status,
-      auditReason: noteData.audit_reason,
-      excerpt: version.excerpt,
-      tags: version.noteVersionTags?.map(t => t.tag.name) || []
-    }
-    detailDialogVisible.value = true
-  } catch (error) {
-    console.error(error)
-    ElMessage.error('获取文章详情失败')
-  } finally {
-    loading.value = false
+const handleView = (row) => {
+  // 直接从列表数据中获取版本信息
+  const version = row.pendingVersion || row.publishedVersion || row.draftVersion
+  
+  if (!version) {
+    ElMessage.warning('无内容')
+    return
   }
+  
+  currentDetailNote.value = {
+    title: version.title,
+    content: version.content_md,
+    cover: getImageUrl(version.cover_url),
+    author: row.author?.nickname,
+    category: version.category?.name || '未分类',
+    status: row.status,
+    auditReason: row.audit_reason,
+    excerpt: version.excerpt,
+    tags: version.noteVersionTags?.map(t => t.tag.name) || []
+  }
+  detailDialogVisible.value = true
 }
 
 const handleAudit = async (row, action) => {
