@@ -71,5 +71,5 @@ npm run build
 
 ## 🔌 关联项目
 
-- 后端服务: [TechShare Server](../TechShareServer)
-- 用户前台: [TechShare Hub](../TechShareHub)
+- 后端服务: [TechShare Server](https://github.com/NKDShinKu/TechShareServer)
+- 用户前台: [TechShare Hub](https://github.com/NKDShinKu/TechShareHub)
